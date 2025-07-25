@@ -6,22 +6,37 @@ import Lookup from '@/data/Lookup'
 import { ArrowRight, Link } from 'lucide-react'
 import React, { useContext, useState } from 'react'
 import SignInDialog from './SignInDialog';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
+import { useRouter } from 'next/navigation';
 
 function Hero() {
   const [userInput, setUserInput] = useState();
   const {messages, setMessages} = useContext(MessagesContext);
-  const [userDetail, setUserDetail] = useState(UserDetailContext);
+  const {userDetail, setUserDetail} = useContext(UserDetailContext);
   const [openDialog, setOpenDialog] = useState(false);
+  const CreateWorkspace = useMutation(api.workspace.CreateWorkspace);
+  const router = useRouter();
 
-  const onGenerate = (input) => {
+  const onGenerate = async(input) => {
     if(!userDetail?.name){
       setOpenDialog(true);
       return;
     }
-    setMessages({
+
+    const msg = {
       role: 'user',
       content: input
-    })
+    } 
+
+    setMessages(msg);
+    
+    const workspaceId = await CreateWorkspace({
+      user: userDetail._id,
+      messages: [msg]
+    });
+    console.log(workspaceId);
+    router.push('/workspace/'+workspaceId);
   }
   return (
     <div className='flex flex-col items-center gap-2 mt-36 xl:mt-52'>
