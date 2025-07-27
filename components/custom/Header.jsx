@@ -5,7 +5,7 @@ import Colors from '@/data/Colors'
 import { UserDetailContext } from '@/context/UserDetails.context'
 
 function Header() {
-  const {userDetail, setUserDetails} = useContext(UserDetailContext);
+  const {userDetail, setUserDetail} = useContext(UserDetailContext);
   return (
     <div className='p-4 flex justify-between items-center'>
         <Image src={'/logo.png'} alt='Logo' width={120} height={100}/>
