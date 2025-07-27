@@ -12,6 +12,7 @@ import Colors from '@/data/Colors';
 import Prompt from '@/data/Prompt';
 import axios from 'axios'; // Missing axios import
 import ReactMarkdown from 'react-markdown';
+import { useSidebar } from '../ui/sidebar';
 
 function ChatView() {
   const {id} = useParams();
@@ -21,6 +22,7 @@ function ChatView() {
   const [userInput, setUserInput] = useState();
   const [loading, setLoading] = useState(false);
   const UpdateMessages = useMutation(api.workspace.UpdateMessage)
+  const {toggleSidebar} = useSidebar();
 
   useEffect(() => {
     id && GetWorkspaceData();
@@ -76,7 +78,7 @@ function ChatView() {
 
   return (
     <div className='relative h-[85vh] flex flex-col'>
-      <div className='flex-1 overflow-y-scroll scrollbar-hide'>
+      <div className='flex-1 overflow-y-scroll scrollbar-hide pl-5'>
         {Array.isArray(messages) && messages?.map((msg, index) => (
           <div key={index}
           className='bg-gray-700 p-3 rounded-lg mb-2 flex gap-3 items-center leading-7'
@@ -94,8 +96,16 @@ function ChatView() {
         <div className='bg-gray-700 p-3 rounded-lg mb-2 flex gap-3 items-start'>
               <Loader2Icon className='animate-spin' />
               <h2>Generating response...</h2>
-        </div>}
+        </div>
+        }
       </div>
+
+
+      <div className='flex gap-2 items-end'>
+        {userDetail && <Image src={userDetail?.picture} alt='user' width={30} height={30}
+        className='rounded-full cursor-pointer'
+        onClick={toggleSidebar}/>}
+      
 
        <div className='p-5 border rounded-xl max-w-xl w-full mt-3'
       style={{
@@ -117,6 +127,7 @@ function ChatView() {
         <Link className='w-5 h-5'/>
       </div>
       </div>
+    </div>
     </div>
   )
 }
