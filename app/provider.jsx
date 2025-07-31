@@ -11,10 +11,12 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import AppSideBar from '@/components/custom/AppSideBar';
 import { usePathname } from 'next/navigation';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { ActionContext } from '@/context/ActionContext';
 
 function Provider({children}) {
   const [messages, setMessages] = useState();
   const [userDetail, setUserDetail] = useState();
+  const [action, setAction] = useState();
   const convex = useConvex();
   const pathname = usePathname();
 
@@ -45,6 +47,7 @@ function Provider({children}) {
       <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }}>
       <UserDetailContext.Provider value={{userDetail, setUserDetail}}>
         <MessagesContext.Provider value={{messages, setMessages}}>
+          <ActionContext.Provider value={{action, setAction}}>
           <NextThemesProvider
             attribute="class"
             defaultTheme="dark"
@@ -74,6 +77,7 @@ function Provider({children}) {
               )}
             </div>
           </NextThemesProvider>
+          </ActionContext.Provider>
         </MessagesContext.Provider>
       </UserDetailContext.Provider>
       </PayPalScriptProvider>

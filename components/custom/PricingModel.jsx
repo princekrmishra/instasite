@@ -6,6 +6,7 @@ import { PayPalButtons } from '@paypal/react-paypal-js'
 import { UserDetailContext } from '@/context/UserDetails.context'
 import { useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
+import Image from 'next/image'
 // import { data } from 'autoprefixer'
 
 function PricingModel() {
@@ -51,6 +52,7 @@ function PricingModel() {
                 }} />
             </div>
         ))}
+        
     </div>
   )
 }

@@ -17,6 +17,7 @@ import { useParams } from "next/navigation";
 import { Loader2Icon } from "lucide-react";
 import { countToken } from "./ChatView";
 import { UserDetailContext } from "@/context/UserDetails.context";
+import SandpackPreviewClient from "./SandpackPreviewClient";
 
 function CodeView() {
   const {id} = useParams();
@@ -113,13 +114,14 @@ function CodeView() {
       options={{
         externalResources: ['https://cdn.tailwindcss.com']
       }}>
-        <SandpackLayout>
+        <SandpackLayout style={{ width: "100%" }}>
           {activeTab =='code'?<> 
-            <SandpackFileExplorer style={{ height: "80vh" }} />
-            <SandpackCodeEditor style={{ height: "80vh" }} />
+            <SandpackFileExplorer style={{ height: "80vh", width: "20%" }} />
+            <SandpackCodeEditor style={{ height: "80vh", width: "80%" }} />
           </>:
           <>
-            <SandpackPreview style={{ height: "80vh" }} showNavigator={true}/>
+            
+             <SandpackPreviewClient />
           </>}
           
         </SandpackLayout>

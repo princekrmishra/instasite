@@ -10,7 +10,6 @@ const lookup = {
     "Create Login/Signup Screen",
     "Create Blog Website in Next.js",
     "Create Portfolio Website with Tailwind",
-    "Create Admin Panel Dashboard"
   ],
 
   HERO_HEADING: "What do you want to build?",
