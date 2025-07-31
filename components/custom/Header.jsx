@@ -3,12 +3,15 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import Colors from '@/data/Colors'
 import { UserDetailContext } from '@/context/UserDetails.context'
+import Link from 'next/link'
 
 function Header() {
   const {userDetail, setUserDetail} = useContext(UserDetailContext);
   return (
     <div className='p-4 flex justify-between items-center'>
+      <Link href='/'>
         <Image src={'/logo.png'} alt='Logo' width={120} height={100}/>
+        </Link>
         {!userDetail?.name && 
           <div className="flex gap-5">
               <Button variant='ghost'>

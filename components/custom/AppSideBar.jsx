@@ -11,16 +11,18 @@ import { Button } from '../ui/button'
 import { MessageCircleCode } from 'lucide-react'
 import WorkspaceHistory from './WorkspaceHistory'
 import SideBarFooter from './SideBarFooter'
+import Link from 'next/link'
 
-function AppSIdeBar() {
+function AppSideBar() {
   return (
     <Sidebar>
-      <SidebarHeader className='p-5 pr-10'>
-        <Image src={'/logo.png'} alt='logo' width={120} height={100}/>
-         <Button className='mt-5'><MessageCircleCode/>Start New Chat</Button>
+      <SidebarHeader className='p-5 pr-10 cursor-pointer'>
+        <Link href="/">
+        <Image src={'/logo.png'} alt='logo' width={120} height={100} className=''/>
+        </Link>
       </SidebarHeader>
       <SidebarContent className='p-5'>
-       
+       <Button className='mt-5'><MessageCircleCode/>Start New Chat</Button>
         <SidebarGroup>
             <WorkspaceHistory />
         </SidebarGroup>
@@ -33,4 +35,4 @@ function AppSIdeBar() {
   )
 }
 
-export default AppSIdeBar
+export default AppSideBar

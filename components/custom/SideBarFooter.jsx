@@ -1,32 +1,39 @@
 import { HelpCircle, icons, LogOut, Settings, Wallet } from 'lucide-react'
 import React from 'react'
 import { Button } from '../ui/button'
+import { useRouter } from 'next/navigation'
 
 function SideBarFooter() {
+    const router = useRouter();
     const options = [
         {
             name: "Settings",
-            icons: Settings
+            icon: Settings
         },
         {
             name: "Help Center",
-            icons: HelpCircle
+            icon: HelpCircle
         },
         {
             name: "My Subscription",
-            icons: Wallet
+            icon: Wallet,
+            path: '/pricing'
         },
         {
             name: "Sign Out",
-            icons: LogOut
+            icon: LogOut
         },
 
     ]
+
+    const onOptionClick = (option) => {
+        router.push(option.path);
+    }
   return (
     <div className='p-2 mb-10'>
         {options.map((options, index) => (
-            <Button variant='ghost' className='w-full flex justify-start my-3' key={index}>
-                <options.icons/>
+            <Button variant='ghost'  onClick={() => onOptionClick(options)} className='w-full flex justify-start my-3 cursor-pointer' key={index}>
+                <options.icon/>
                 {options.name}
             </Button>
         ))}

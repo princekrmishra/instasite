@@ -82,7 +82,42 @@ const lookup = {
     "@google/generative-ai": "^0.21.0",
   },
 
+  PRICING_DESC: 'start with a free account to speed up your workflow on public projects or boost your entire team with instantly-opening production environments.',
+
+PRICING_OPTIONS: [
+  {
+    name: 'FREE',
+    token: '50K',
+    value: 50000,
+    desc: 'Ideal for hobbyists and casual users for light, exploratory use.',
+    price: 5.99
+  },
+  {
+    name: 'Starter',
+    token: '120K',
+    value: '120000',
+    desc: 'Designed for professionals who need to use InstaSite a few times per week.',
+    price: 9.99
+  },
+  {
+    name: 'Pro',
+    token: '50K',
+    value: 2500000,
+    desc: 'Perfect for heavy users looking to enhance daily workflows.',
+    price: 17.99
+  },
+  {
+    name: 'Unlimited (License)',
+    token: 'Unlimited',
+    value: 999999999,
+    desc: 'Best for power users replying on InstaSite as a core tool for continuous use.',
+    price: 23.99
+  },
+]
+
 };
+
+
 
 export default lookup;
 
