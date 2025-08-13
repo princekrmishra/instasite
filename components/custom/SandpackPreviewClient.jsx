@@ -35,4 +35,4 @@ function SandpackPreviewClient() {
   )
 }
 
-export default SandpackPreviewClient
+export default SandpackPreviewClient;
