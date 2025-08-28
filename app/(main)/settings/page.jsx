@@ -5,6 +5,17 @@ import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Settings page component that renders and manages a user profile & preferences form.
+ *
+ * Renders inputs for name, email, bio, theme, and notification toggles. Uses local state
+ * initialized from UserDetailContext. "Save Changes" calls a Convex UpdateUser mutation,
+ * merges updated fields back into UserDetailContext, and displays a success alert.
+ * "Delete Account" prompts for confirmation and, if confirmed, calls a Convex DeleteUser mutation
+ * and displays a deletion alert.
+ *
+ * @returns {JSX.Element} The settings page UI.
+ */
 function Settings() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const UpdateUser = useMutation(api.users.UpdateUser);

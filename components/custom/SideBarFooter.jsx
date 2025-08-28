@@ -3,6 +3,16 @@ import React from "react";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
+/**
+ * Sidebar footer component that renders navigation and account action buttons.
+ *
+ * Renders a set of footer options (Settings, Help Center, My Subscription, Sign Out)
+ * as ghost-styled buttons. Clicking an option navigates to its `path` using the Next.js
+ * router; clicking "Sign Out" clears `localStorage` and `sessionStorage` and redirects
+ * to the root path ("/").
+ *
+ * @returns {JSX.Element} The footer element containing option buttons.
+ */
 function SideBarFooter() {
   const router = useRouter();
   const options = [
