@@ -6,12 +6,29 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Render a Radix Accordion root and forward all props.
+ *
+ * Renders an AccordionPrimitive.Root element with a data-slot="accordion" attribute.
+ *
+ * @returns {JSX.Element} The Accordion root element.
+ */
 function Accordion({
   ...props
 }) {
   return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 
+/**
+ * Renders a styled Accordion item.
+ *
+ * Wraps `AccordionPrimitive.Item`, applying a bottom border (except on the last item),
+ * merging any provided `className` with the default "border-b last:border-b-0" via `cn`,
+ * forwards all other props, and sets `data-slot="accordion-item"` for styling/testing hooks.
+ *
+ * @param {object} props - Props forwarded to `AccordionPrimitive.Item`. `className` will be merged with default styles.
+ * @returns {JSX.Element} The accordion item element.
+ */
 function AccordionItem({
   className,
   ...props
@@ -24,6 +41,18 @@ function AccordionItem({
   );
 }
 
+/**
+ * Renders the clickable header for an accordion item with a rotating chevron icon.
+ *
+ * The component composes Radix's Accordion Header and Trigger, applies default styling,
+ * and forwards additional props to the underlying Trigger. The ChevronDownIcon rotates
+ * when the trigger's state is open.
+ *
+ * @param {string} [className] - Additional CSS classes merged with the component's defaults.
+ * @param {React.ReactNode} children - Content displayed inside the trigger (typically the section title).
+ * @param {object} [props] - Additional props passed through to the underlying Radix Accordion Trigger.
+ * @returns {JSX.Element} The Accordion trigger element.
+ */
 function AccordionTrigger({
   className,
   children,
@@ -46,6 +75,18 @@ function AccordionTrigger({
   );
 }
 
+/**
+ * Renders the collapsible content area for an accordion item.
+ *
+ * Wraps children in an inner padded container and applies state-driven open/close
+ * animations, overflow handling, and small text sizing. All other props are
+ * forwarded to Radix's AccordionPrimitive.Content.
+ *
+ * @param {Object} props
+ * @param {string} [props.className] - Additional class names applied to the inner wrapper.
+ * @param {import('react').ReactNode} props.children - Content to display inside the panel.
+ * @returns {JSX.Element} The accordion content element.
+ */
 function AccordionContent({
   className,
   children,

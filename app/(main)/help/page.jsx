@@ -1,6 +1,14 @@
 "use client"
 import React, { useState } from "react";
 
+/**
+ * Render the Help Center UI: search-enabled FAQ list, quick tips, and contact options.
+ *
+ * Displays a searchable set of frequently asked questions (case-insensitive match against question text),
+ * a "Quick Tips" panel with shortcuts and guidance, and a contact section containing an email link and an external contact form.
+ *
+ * @returns {JSX.Element} The Help Center React component.
+ */
 function Help() {
   const [search, setSearch] = useState("");
 

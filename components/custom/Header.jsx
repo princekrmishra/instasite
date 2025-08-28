@@ -18,6 +18,20 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu"
 
+/**
+ * Header component that renders the top navigation bar with logo and user controls.
+ *
+ * Renders a logo linking to home and a right-side area that adapts to authentication and route:
+ * - When unauthenticated shows a "Get Started" button that opens the sign-in dialog.
+ * - When authenticated shows workspace-specific action buttons (Export, Deploy) if the current path includes "workspace",
+ *   and a user avatar that triggers a dropdown with Help, Settings, Pricing, and Sign Out.
+ *
+ * Side effects:
+ * - onActionBtn(action) records the provided action into ActionContext with a timestamp.
+ * - Signing out clears user details, localStorage and sessionStorage, and redirects to the root path ("/").
+ *
+ * @returns {JSX.Element} The header element.
+ */
 function Header() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const { setAction } = useContext(ActionContext);
