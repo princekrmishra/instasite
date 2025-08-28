@@ -53,3 +53,8 @@ export const UpdateToken = mutation({
         return result;
     }
 })
+
+
+export const UpdateUser = mutation(async ({ db }, { userId, name, email }) => {
+  return await db.patch(userId, { name, email });
+});
